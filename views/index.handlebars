@@ -1,0 +1,51 @@
+      <div class="jumbotron jumbotron-fluid heading">
+  <div class="container">
+    <h1 class="display-4 mainTitle">It's Burger Time</h1>
+    <img class="center-block" src="/assets/img/burger.png">
+    <p class="subHeading">Write down all the burgers you wish to devour</p>
+  </div>
+  <form class="create-update-form" action="/insertOne" method="POST">
+  <div class="input-group mb-3">
+  <input type="text" class="form-control" name="burger_name" placeholder="Burger name..." aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add Burger</button>
+  </div>
+  </form>
+</div>
+</div>
+<div class="jumbotron jumbotron-fluid heading2">
+
+<div class="row">
+    <div class="col-6 text-center">
+        <h2 class="sub-title">Waiting to be devoured</h2>
+        <ul>
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            
+
+                <p class="Bname">{{this.burger_name}}</p>
+            <form action ="/updateOne/{{this.id}}" method="POST">
+            <input type = "hidden" name="devoured" value="1">
+            <button type="submit" class="btn devourBtn btn-primary">devour</button>
+            </form>
+            
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col-6 text-center">
+        <h2 class="sub-title">Devoured Burgers</h2>
+        <ul>
+            {{#each burgers}}
+            {{#if this.devoured}}
+            <p class="Bname">{{this.burger_name}}</p>
+             <form action ="/deleteOne/{{this.id}}" method="POST">
+              <button type="submit" class="btn btn-primary">delete</button>
+             </form>
+             {{/if}}
+             {{/each}}
+        </ul>
+    </div>
+</div>
+
+</div>
