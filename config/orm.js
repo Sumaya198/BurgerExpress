@@ -15,10 +15,7 @@ const orm = {
             
         });
     },
-    //for putting it into the database
-    // Create Insert Function
-    //each parameter will take the place of the question mark
-    //question marks will be replaced by the parameters within the query i.e. table
+
     insertOne: function(burgerTable, burger1, burger2, cback){
         let dataQuery = "INSERT INTO ?? (??) VALUES (?);" 
          connection.query(dataQuery, [burgerTable, burger1, burger2], function(err, res){
@@ -26,15 +23,15 @@ const orm = {
              cback(res)
          });
     },
-    //Create update function
+
     updateOne: function(burgerDevoured, id, cback){
         let dataQuery = "UPDATE burgers SET devoured='1' WHERE " + id + ";";
-            connection.query(dataQuery, [id], function(err, res){
+            connection.query(dataQuery, [burgerDevoured, id], function(err, res){
                 if (err) throw err;
                 cback(res);
             });
     },
-    //Create delete function
+    
     deleteOne: function(id, cback){
         let dataQuery = "DELETE FROM burgers WHERE " + id + ";";
         connection.query(dataQuery, [id], function(err, res){
@@ -46,3 +43,4 @@ const orm = {
 
 
 module.exports = orm;
+

@@ -26,7 +26,7 @@
                 <p class="Bname">{{this.burger_name}}</p>
             <form action ="/updateOne/{{this.id}}" method="POST">
             <input type = "hidden" name="devoured" value="1">
-            <button type="submit" class="btn devourBtn btn-primary">devour</button>
+            <button type="submit" class="btn devourBtn btn-primary">Devour</button>
             </form>
             
             {{/unless}}
@@ -40,7 +40,7 @@
             {{#if this.devoured}}
             <p class="Bname">{{this.burger_name}}</p>
              <form action ="/deleteOne/{{this.id}}" method="POST">
-              <button type="submit" class="btn btn-primary">delete</button>
+              <button type="submit" class="btn devourBtn btn-primary">Delete</button>
              </form>
              {{/if}}
              {{/each}}
