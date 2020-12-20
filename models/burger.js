@@ -11,7 +11,7 @@ const burger = {
     },  
 
     //insert function
-    //newBurger is an array
+    
     insertOne: function (newBurger, callback) {
     //table name and burger name
         orm.insertOne("burgers", "burger_name", newBurger, function (res) {
