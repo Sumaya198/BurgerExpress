@@ -5,15 +5,16 @@ let connection;
 if (process.env.JAWSDB_URL){
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-  const password = process.argv[2];
+  
   connection = mysql.createConnection({
-    host: "localhost",
+    host: process.env.HOST,
     port: 3306,
-    user: "root",
-    password,
-    database: "burger_db",
+    user: process.env.USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
   });
 }
+//console.log(process.env)
 
 
   connection.connect();
